@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="pending_new" model="project.task.type">
+            <field name="name">New</field>
+            <field name="sequence">0</field>
+        </record>
+
+        <record id="pending_closed" model="project.task.type">
+            <field name="name">Closed</field>
+            <field name="sequence">1</field>
+        </record>
+
+    </data>
+</odoo>

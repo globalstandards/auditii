@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="auditii_website.admin/assets_common">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" type="text/css"/>
+        <link rel="stylesheet" href="/auditii_website/static/src/assets1/css/icons/icomoon/styles.css" type="text/css"/>
+        <link rel="stylesheet" href="/auditii_website/static/src/assets1/css/icons/fontawesome/styles.min.css" type="text/css"/>
+        <link rel="stylesheet" href="/auditii_website/static/src/assets1/css/bootstrap.css" type="text/css"/>
+        <link rel="stylesheet" href="/auditii_website/static/src/assets1/css/core.css" type="text/css"/>
+        <link rel="stylesheet" href="/auditii_website/static/src/assets1/css/components.css" type="text/css"/>
+        <link rel="stylesheet" href="/auditii_website/static/src/assets1/css/colors.css" type="text/css"/>
+        
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/loaders/pace.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/core/libraries/jquery.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/core/libraries/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/forms/inputs/autosize.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/loaders/blockui.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/forms/tags/tagsinput.min.js"></script>
+
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/visualization/d3/d3.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/visualization/d3/d3_tooltip.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/forms/styling/switchery.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/forms/styling/uniform.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/forms/selects/bootstrap_select.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/ui/moment/moment.min.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/pickers/daterangepicker.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/pages/form_bootstrap_select.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/plugins/ui/drilldown.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/core/app.js"></script>
+        <!--<script type="text/javascript" src="/auditii_website/static/src/assets1/js/charts/google/lines/lines.js"></script>-->
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/pages/picker_date.js"></script>
+        <script type="text/javascript" src="/auditii_website/static/src/assets1/js/pages/dashboard_boxed_full.js"></script>
+    </template>
+
+    <template id="auditii_website.admin/layout" name="Layout">&lt;!DOCTYPE html&gt;
+        <html>
+            <head>
+                <meta charset="utf-8"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+                <title t-esc="title or 'Auditii'"/>
+
+                <script type="text/javascript">
+                    var odoo = {
+                        csrf_token: "<t t-esc="request.csrf_token(None)"/>",
+                    };
+                </script>
+
+                <t t-call="auditii_website.admin/assets_common"/>
+            </head>
+            <body class="layout-boxed navbar-top">
+                <div class="navbar navbar-inverse bg-primary-700 navbar-fixed-top">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html"><img src="/auditii_website/static/src/assets1/images/logo_light2.png" alt=""/></a>
+                        <ul class="nav navbar-nav visible-xs-block">
+                            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-collapse collapse" id="navbar-mobile">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown mega-menu mega-menu-wide">
+                                <a href="/admin/contacts">
+                                    <i class="fa fa-users position-left"></i> Contacts
+                                </a>
+                            </li>
+                            <li class="dropdown mega-menu mega-menu-wide">
+                                <a href="/admin/audits">
+                                    <i class="fa fa-pencil-square-o position-left"></i> Audits
+                                </a>
+                            </li>
+                            <li class="dropdown mega-menu mega-menu-wide">
+                                <a href="/admin/complaints">
+                                    <i class="fa fa-warning position-left"></i> Issues
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bar-chart position-left"></i> Reports <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="/admin/reports/efficiency"> Efficiency</a></li>
+                                    <li><a href="/admin/reports/complaints"> Issues</a></li>
+                                    <li><a href="/admin/reports/users"> User Performance</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-cogs position-left"></i> Settings <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li class="dropdown-submenu">
+                                        <a href="#"><i class="fa fa-tags"></i> Tags</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/admin/settings/tags/contacts"> Contacts</a></li>
+                                            <li><a href="/admin/settings/tags/audits"> Audits</a></li>
+                                            <li><a href="/admin/settings/tags/issues"> Issues</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/admin/settings/users"><i class="fa fa-users"></i> Users</a></li>
+                                    <li><a href="/admin/settings/integrations"><i class="icon-chrome"></i> Integrations</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown dropdown-user">
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="/auditii_website/static/src/assets1/images/demo/users/face11.jpg" alt=""/>
+                                <span>Victoria</span>
+                                <i class="caret"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+                                    <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
+                                    <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="page-container">
+                    <div class="page-content">
+                        <div class="content-wrapper">
+                            <t t-raw="0"/>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </html>
+    </template>
+
+    <template id="auditii_website.admin/contacts" name="Suppliers">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">Contacts</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn"> Create Contact</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Contacts</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="contacts" t-as="contact">
+                                    <tr>
+                                        <td>
+                                            <div class="media-left media-middle">
+                                                <span t-field="contact.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-circle img-xs&quot;}"/>
+                                            </div>
+                                            <div class="media-body" style="vertical-align: middle">
+                                                <a t-attf-href="/admin/contacts/{{contact.id}}" class="display-inline-block text-default text-semibold letter-icon-title"><t t-esc="contact.name"/></a>
+                                            </div>
+                                        </td>
+                                        <td><t t-esc="contact.phone"/></td>
+                                        <td><t t-esc="contact.email"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/contact" name="Supplier Details">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold"><t t-esc="contact.name"/></span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn">Create Contact</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><a href="/admin/contacts">Contacts</a></li>
+                        <li class="active"><t t-esc="contact.name"/></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <form class="form-horizontal" action="#">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <span t-field="contact.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;style&quot;: &quot;width: 70px; height: 70px;&quot;}"/>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <input type="text" class="form-control" placeholder="Name..." t-attf-value="{{contact.name}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <legend class="text-bold">General</legend>
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Address</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" placeholder="Street..." t-attf-value="{{contact.street}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4"></label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" placeholder="Street 2..." t-attf-value="{{contact.street2}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4"></label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" placeholder="City..." t-attf-value="{{contact.city}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Country</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt2">México</option>
+                                                    <option value="opt1">USA</option>
+                                                    <option value="opt3">Colombia</option>
+                                                    <option value="opt4">Brasil</option>
+                                                    <option value="opt5">Canada</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Website</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" placeholder="Ex.: info@tindau.com" t-attf-value="{{contact.website}}"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Phone</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" t-attf-value="{{contact.phone}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Mobile</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" t-attf-value="{{contact.mobile}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Email</label>
+                                            <div class="col-lg-8">
+                                                <input type="email" class="form-control" t-attf-value="{{contact.email}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Language</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt1">Español</option>
+                                                    <option value="opt2">English</option>
+                                                    <option value="opt3">Francais</option>
+                                                    <option value="opt4">Germany</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Tags</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" data-role="tagsinput" value="Alimentos,Alimentos/Salsas"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="tabbable">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a class="text-semibold" href="#contacts-tab" data-toggle="tab">Contacts</a></li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="contacts-tab">
+                                                <div style="margin-bottom: 10px">
+                                                    <button type="button" class="btn bg-primary btn-icon heading-btn">Create</button>
+                                                </div>
+                                                <div class="row">
+                                                    <t t-foreach="contact.child_ids" t-as="child">
+                                                        <div class="col-lg-4 col-md-4">
+                                                            <div class="panel panel-body">
+                                                                <div class="media">
+                                                                    <div class="media-left">
+                                                                        <span t-field="child.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;style&quot;: &quot;width: 70px; height: 70px;&quot;}"/>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <h6 class="media-heading"><t t-esc="child.name"/></h6>
+                                                                        <p class="text-muted"><t t-esc="child.function"/><br/><t t-esc="child.email"/></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/audits" name="Audits">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5><span class="text-semibold">Audits</span></h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn"> Create Audit</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Audits</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Ref. #</th>
+                                    <th width="25%">Auditee</th>
+                                    <th width="25%">Auditor</th>
+                                    <th width="20%">Checklist</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="audits" t-as="audit">
+                                    <tr>
+                                        <td><a t-attf-href="/admin/audits/{{audit.id}}"><t t-esc="audit.name"/></a></td>
+                                        <td>
+                                            <div class="media-left media-middle">
+                                                <a t-attf-href="/admin/contacts/{{audit.partner_id.id}}">
+                                                    <span t-field="audit.partner_id.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-circle img-xs&quot;}"/>
+                                                </a>
+                                            </div>
+                                            <div class="media-body" style="vertical-align: middle">
+                                                <a t-attf-href="/admin/contacts/{{audit.partner_id.id}}" class="display-inline-block text-default text-semibold letter-icon-title"><t t-esc="audit.partner_id.name"/></a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="media-left media-middle">
+                                                <a t-attf-href="/admin/users/{{audit.user_id.id}}">
+                                                    <span t-field="audit.user_id.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-circle img-xs&quot;}"/>
+                                                </a>
+                                            </div>
+                                            <div class="media-body" style="vertical-align: middle">
+                                                <a t-attf-href="/admin/users/{{audit.user_id.id}}" class="display-inline-block text-default text-semibold letter-icon-title"><t t-esc="audit.user_id.name"/></a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                GFSI Global Markets Programee
+                                            </div>
+                                        </td>
+                                        <td><t t-esc="audit.date_deadline"/></td>
+                                        <td><span class="label bg-success-400"><t t-esc="audit.stage_id.name"/></span></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/audit" name="Audit Details">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold"><t t-esc="audit.name"/></span> - Audit Request
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn"> Create Audit</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><a href="/admin/audits">Audits</a></li>
+                        <li class="active"><t t-esc="audit.name"/></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <!--
+                <div class="panel panel-flat panel-collapsed">
+                    <div class="panel-heading">
+                        <h6 class="panel-title"><i class="icon-link position-left"></i> Attached files</h6>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li><a data-action="collapse"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="media-left media-middle">
+                                    <i class="icon-file-pdf icon-2x text-muted"></i>
+                                </div>
+
+                                <div class="media-body">
+                                    <a href="/auditii_website/static/files/opening_closing_meeting_1.pdf" class="media-heading text-semibold">Opening_Closing_Meeting.pdf</a>
+                                    <ul class="list-inline list-inline-separate list-inline-condensed text-size-mini text-muted">
+                                        <li>Size: 359KB</li>
+                                        <li>Added by <a href="#">German Zarate</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="media-right media-middle">
+                                    <ul class="icons-list">
+                                        <li><a href="/auditii_website/static/files/opening_closing_meeting_1.pdf"><i class="icon-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left media-middle">
+                                    <i class="icon-file-pdf icon-2x text-muted"></i>
+                                </div>
+
+                                <div class="media-body">
+                                    <a href="/auditii_website/static/files/executive_report_signed_1.pdf" class="media-heading text-semibold">Executive_Report_Signed.pdf</a>
+                                    <ul class="list-inline list-inline-separate list-inline-condensed text-size-mini text-muted">
+                                        <li>Size: 336KB</li>
+                                        <li>Added by <a href="#">German Zarate</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="media-right media-middle">
+                                    <ul class="icons-list">
+                                        <li><a href="/auditii_website/static/files/executive_report_signed_1.pdf"><i class="icon-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                -->
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="panel panel-flat">
+                            <div class="panel-heading" style="margin-bottom:10px">
+                                <h6 class="panel-title">&amp;nbsp;</h6>
+                                <div class="heading-elements">
+                                    <div class="heading-btn">
+                                        <a href="/admin/audits/1/assessment" type="button" class="btn border-slate text-slate-800 btn-flat">Assessment</a>
+                                        <a href="/auditii_website/static/files/executive_report_1.pdf" class="btn border-slate text-slate-800 btn-flat"><i class="icon-printer position-left"></i> Executive Report</a>
+                                        <a href="/auditii_website/static/files/general_report_1.pdf" class="btn border-slate text-slate-800 btn-flat"><i class="icon-printer position-left"></i> General Report</a>
+                                    </div>
+                                </div>
+                                <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+                            </div>
+                            <div class="panel-body">
+                                <form class="form-horizontal" action="#">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <fieldset class="content-group">
+                                                <div class="form-group">
+                                                    <label class="control-label col-lg-4 text-semibold">Auditee</label>
+                                                    <div class="col-lg-8">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" readonly="readonly" t-attf-value="{{audit.partner_id.name}}"/>
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-lg-4 text-semibold">Auditor</label>
+                                                    <div class="col-lg-8">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" readonly="readonly" t-attf-value="{{audit.user_id.name}}"/>
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-lg-4 text-semibold">Checklist</label>
+                                                    <div class="col-lg-8">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" readonly="readonly"/>
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset class="content-group">
+                                                <div class="form-group">
+                                                    <label class="control-label col-lg-4 text-semibold">Date</label>
+                                                    <div class="col-lg-8">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control daterange-single" t-attf-value="{{audit.date_deadline}}"/>
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-lg-4 text-semibold">Tags</label>
+                                                    <div class="col-lg-8">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" data-role="tagsinput" value=""/>
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="tabbable">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active"><a class="text-semibold" href="#notes-tab" data-toggle="tab">Notes</a></li>
+                                                </ul>
+
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="notes-tab">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="form-group">
+                                                                    <textarea rows="4" class="form-control elastic" placeholder="Describe audit notes here..." style="overflow: hidden; word-wrap: break-word; resize: horizontal;"><t t-raw="audit.description"/></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="thumbnail">
+                            <div class="thumb thumb-rounded thumb-slide">
+                                <span t-field="audit.partner_id.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;}"/>
+                            </div>
+                            <div class="caption">
+                                <h6 class="text-semibold no-margin"><a t-attf-href="/admin/contacts/{{audit.partner_id.id}}"><t t-esc="audit.partner_id.name"/></a> 
+                                    <small class="display-block"><t t-esc="audit.partner_id.street"/></small>
+                                    <small class="display-block"><t t-esc="audit.partner_id.street2"/></small>
+                                    <small class="display-block"><t t-esc="audit.partner_id.city"/> <t t-esc="audit.partner_id.state_id.name"/>, <t t-esc="audit.partner_id.country_id.code"/></small>
+                                    <br/>
+                                    <small class="display-block"><i class="fa fa-envelope-o"></i>&amp;nbsp;&amp;nbsp;<t t-esc="audit.partner_id.email"/></small>
+                                    <small class="display-block"><i class="fa fa-phone"></i>&amp;nbsp;&amp;nbsp;<t t-esc="audit.partner_id.phone"/></small>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h5 class="panel-title text-semiold"><i class="icon-bubbles4 position-left"></i> Comments</h5>
+                            </div>
+
+                            <div class="panel-body">
+                                <ul class="media-list content-group-lg stack-media-on-mobile">
+                                    <t t-foreach="audit.message_ids" t-as="message">
+                                        <li class="media" t-if="message.message_type == 'comment'">
+                                            <div class="media-left">
+                                                <span t-field="message.author_id.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-circle img-xs&quot;}"/>
+                                            </div>
+
+                                            <div class="media-body">
+                                                <div class="media-heading">
+                                                    <a t-attf-href="/admin/users/{{message.author_id.id}}" class="text-semibold"><t t-esc="message.author_id.name"/></a>
+                                                    <span class="media-annotation dotted">04 Nov 2016</span>
+                                                </div>
+
+                                                <p><t t-raw="message.body"/></p>
+                                            </div>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/audit/assessment" name="Event Assessment">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">A001</span> - Assessment
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><a href="/admin/audits">Audits</a></li>
+                        <li><a href="/admin/audits/1">A001</a></li>
+                        <li class="active">Assessment</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="panel-heading" style="margin-bottom:10px">
+                        <h6 class="panel-title">&amp;nbsp;</h6>
+                        <div class="heading-elements">
+                            <div class="heading-btn">
+                                <a href="/admin/va/cars" class="btn border-slate text-slate-800 btn-flat">4 Corrective Action Requests</a>
+                            </div>
+                        </div>
+                        <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" action="#">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Supplier</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control alpha-purple border-purple-400">
+                                                    <option value="opt1">Salsas Jaliscienses</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Results</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt1">Cumple todas las especificaciones</option>
+                                                    <option value="opt2" selected="selected">Cumple con observaciones</option>
+                                                    <option value="opt2">No cumple</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="tabbable">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a class="text-semibold" href="#question-tab" data-toggle="tab">Requirements</a></li>
+                                            <li><a class="text-semibold" href="#notes-tab" data-toggle="tab">Notes</a></li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="question-tab">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <div class="table-responsive">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th width="5%">Section</th>
+                                                                            <th width="45%">Requirement</th>
+                                                                            <th width="45%">Observations</th>
+                                                                            <th width="5%">Results</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>B.A 1</td>
+                                                                            <td>
+                                                                                Specifications including product release
+                                                                            </td>
+                                                                            <td>
+                                                                                <textarea rows="1" class="form-control elastic" style="overflow: hidden; word-wrap: break-word; resize: vertical;"></textarea>
+                                                                            </td>
+                                                                            <td><span class="label bg-success-400">Conform</span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>B.A 1</td>
+                                                                            <td>
+                                                                                Specifications including product release
+                                                                            </td>
+                                                                            <td>
+                                                                                <textarea rows="1" class="form-control elastic" style="overflow: hidden; word-wrap: break-word; resize: vertical;"></textarea>
+                                                                            </td>
+                                                                            <td><span class="label bg-success-400">Conform</span></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="notes-tab">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <textarea rows="4" class="form-control elastic" style="overflow: hidden; word-wrap: break-word; resize: vertical;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/complaints" name="Complaints">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">Issues</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn"> Create Issue</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Issues</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="10%">Ref. #</th>
+                                    <th width="25%">Contact</th>
+                                    <th width="45">Description</th>
+                                    <th width="10%">Date</th>
+                                    <th width="10%">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="/admin/complaints/1">CP001</a></td>
+                                    <td>
+                                        <div class="media-left media-middle">
+										    <a href="#"><img src="/auditii_website/static/src/assets1/images/demo/users/face15.jpg" class="img-circle img-xs" alt=""/></a>
+										</div>
+                                        <div class="media-body" style="vertical-align: middle">
+											<a href="/admin/va/suppliers/1" class="display-inline-block text-default text-semibold letter-icon-title">Salsas Jaliscienses</a>
+										</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span class="label bg-blue">Deficiente</span>
+                                        </div>
+                                        <div>
+                                        El proveedor a entregado una caja donde un 80% de los productos vienen en tapas deficientes, se detectaron fisuras y ralladuras en varias de ellas.
+                                        </div>
+                                    </td>
+                                    <td>03/09/2016</td>
+                                    <td><span class="label bg-success-400">Closed</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/admin/complaints/1">CP002</a></td>
+                                    <td>
+                                        <div class="media-left media-middle">
+										    <a href="#"><img src="/auditii_website/static/src/assets1/images/demo/users/face18.jpg" class="img-circle img-xs" alt=""/></a>
+										</div>
+                                        <div class="media-body" style="vertical-align: middle">
+											<a href="/admin/va/suppliers/1" class="display-inline-block text-default text-semibold letter-icon-title">Productos Glama S.A. de C.V.</a>
+										</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span class="label bg-blue">Impuntual</span>
+                                            <span class="label bg-blue">Deficiente</span>
+                                        </div>
+                                        <div>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </div>
+                                    </td>
+                                    <td>04/09/2016</td>
+                                    <td><span class="label bg-warning-400">OPEN</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/admin/complaints/1">CP003</a></td>
+                                    <td>
+                                        <div class="media-left media-middle">
+										    <a href="#"><img src="/auditii_website/static/src/assets1/images/demo/users/face19.jpg" class="img-circle img-xs" alt=""/></a>
+										</div>
+                                        <div class="media-body" style="vertical-align: middle">
+											<a href="/admin/va/suppliers/1" class="display-inline-block text-default text-semibold letter-icon-title">Productos Glama S.A. de C.V.</a>
+										</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span class="label bg-blue">Defectuoso</span>
+                                        </div>
+                                        <div>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </div>
+                                    </td>
+                                    <td>10/09/2016</td>
+                                    <td><span class="label bg-warning-400">OPEN</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/complaint" name="Complaint Details">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">CP001</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn">Create Issue</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><a href="/admin/complaints">Issues</a></li>
+                        <li class="active">CP001</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <form class="form-horizontal" action="#">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">User</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt1">Diego Mendoza</option>
+                                                    <option value="opt2">Carlos Tevez</option>
+                                                    <option value="opt3">Gabriel Vazquez</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Contact</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt1">Salsas Jaliscienses</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Severity</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt1">Minor</option>
+                                                    <option value="opt2">Major</option>
+                                                    <option value="opt3">Critical</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Date</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" placeholder="Street..." value="03 Dic 2016"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Tags</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" data-role="tagsinput" value="Deficiente"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Status</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt1">New</option>
+                                                    <option value="opt2">Closed</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2 text-semibold">Description</label>
+                                            <div class="col-lg-10">
+                                                <textarea rows="4" class="form-control elastic" style="word-wrap: break-word; resize: vertical;">El proveedor a entregado una caja donde un 80% de los productos vienen en tapas deficientes, se detectaron fisuras y ralladuras en varias de ellas.</textarea>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/reports/efficiency" name="Efficiency Report">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">Process Efficiency Report</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><span>Reports</span></li>
+                        <li class="active">Efficiency</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <select class="bootstrap-select" data-width="100%">
+                                <option value="AK">Salsas Jaliscienses</option>
+                                <option value="HI">	Agroalimentaria Delysse S. de R.L.</option>
+                                <option value="CA">Grupo Campanía S.A. de C.V.</option>
+                                <option value="NV">Hidrocultivos Australianos</option>
+                                <option value="NV">Productos Glama S.A. de C.V.</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">Evolution</h5>
+                                <div class="heading-elements">
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="chart-container">
+                                    <div class="chart" id="va-report-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h6 class="panel-title">Variations</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Process</th>
+                                            <th class="col-md-2">02/2005</th>
+                                            <th class="col-md-2">06/2005</th>
+                                            <th class="col-md-2">01/2006</th>
+                                            <th class="col-md-2">06/2006</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Documentation</div>
+                                            </td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 2.43%</span></td>
+                                            <td><span class="text-danger-600"><i class="icon-stats-decline2 position-left"></i> 12.21%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 20.43%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 1.43%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Packaging</div>
+                                            </td>
+                                            <td><span class="text-danger-600"><i class="icon-stats-decline2 position-left"></i> 21.43%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 1.21%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 5.43%</span></td>
+                                            <td><span class="text-danger-600"><i class="icon-stats-decline2 position-left"></i> 37.43%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Distribution</div>
+                                            </td>
+                                            <td><span class="text-danger-600"><i class="icon-stats-decline2 position-left"></i> 9.43%</span></td>
+                                            <td><span class="text-danger-600"><i class="icon-stats-decline2 position-left"></i> 34.21%</span></td>
+                                            <td><span class="text-danger-600"><i class="icon-stats-decline2 position-left"></i> 6.43%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 9.43%</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/reports/complaints" name="Complaints Report">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">Issues Report</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><span>Reports</span></li>
+                        <li class="active">Complaints</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">Evolution General</h5>
+                                <div class="heading-elements">
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="chart-container">
+                                    <div class="chart" id="complaints-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h6 class="panel-title">Variation by Tag</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Tag</th>
+                                            <th class="col-md-2">%</th>
+                                            <th class="col-md-2">Variation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Impuntual</div>
+                                            </td>
+                                            <td><span> 70%</span></td>
+                                            <td><span class="text-danger-600"><i class="icon-stats-decline2 position-left"></i> 12.21%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Deficiente</div>
+                                            </td>
+                                            <td><span> 20%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 5.00%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Costoso</div>
+                                            </td>
+                                            <td><span> 10%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 6.50%</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h6 class="panel-title">Complaints by Supplier</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Supplier</th>
+                                            <th class="col-md-2">%</th>
+                                            <th class="col-md-2">Variation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Salsas Jaliscienses</div>
+                                            </td>
+                                            <td><span> 55%</span></td>
+                                            <td><span class="text-danger-600"><i class="icon-stats-decline2 position-left"></i> 22.21%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Productos Glama S.A. de C.V.</div>
+                                            </td>
+                                            <td><span> 25%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 15.00%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-default text-semibold">Grupo Campanía S.A. de C.V.</div>
+                                            </td>
+                                            <td><span> 20%</span></td>
+                                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 16.50%</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/settings/tags/contacts" name="Users">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">Contact Tags</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn">Create Tag</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li>Tags</li>
+                        <li class="active">Contacts</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="tags" t-as="tag">
+                                    <tr>
+                                        <td><span class="label label-primary"><t t-esc="tag.name"/></span></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/settings/tags/audits" name="Users">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">Audit Tags</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn">Create Tag</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li>Tags</li>
+                        <li class="active">Audits</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="tags" t-as="tag">
+                                    <tr>
+                                        <td><span class="label label-primary"><t t-esc="tag.name"/></span></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/settings/users" name="Users">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">Users</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn">Create User</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Users</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="30%">Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Language</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="users" t-as="user">
+                                    <tr>
+                                        <td>
+                                            <div class="media-left media-middle">
+                                                <span t-field="user.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-circle img-xs&quot;}"/>
+                                            </div>
+                                            <div class="media-body" style="vertical-align: middle">
+                                                <a t-attf-href="/admin/settings/users/{{user.id}}" class="display-inline-block text-default text-semibold letter-icon-title"><t t-esc="user.name"/></a>
+                                            </div>
+                                        </td>
+                                        <td><t t-esc="user.login"/></td>
+                                        <td>Owner</td>
+                                        <td><t t-esc="user.lang"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/settings/user" name="User Details">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold"><t t-esc="user.name"/></span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                        <button type="button" class="btn bg-teal-400 btn-icon heading-btn">Create User</button>
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><a href="/admin/settings/users">Users</a></li>
+                        <li class="active"><t t-esc="user.name"/></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <form class="form-horizontal" action="#">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <span t-field="user.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;style&quot;: &quot;width: 70px; height: 70px;&quot;}"/>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <input type="text" class="form-control" placeholder="Name..." t-attf-value="{{user.name}}"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <input type="text" class="form-control" placeholder="Username..." t-attf-value="{{user.login}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <legend class="text-bold">General</legend>
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Address</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" placeholder="Street..." t-attf-value="{{user.partner_id.street}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4"></label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" placeholder="Street 2..." t-attf-value="{{user.partner_id.street2}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4"></label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" placeholder="City..." t-attf-value="{{user.partner_id.city}}"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Phone</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" t-attf-value="{{user.partner_id.phone}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Mobile</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" t-attf-value="{{user.partner_id.mobile}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Email</label>
+                                            <div class="col-lg-8">
+                                                <input type="email" class="form-control" t-attf-value="{{user.partner_id.email}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Language</label>
+                                            <div class="col-lg-8">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt1">Español</option>
+                                                    <option value="opt2">English</option>
+                                                    <option value="opt3">Francais</option>
+                                                    <option value="opt4">Germany</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <fieldset class="content-group">
+                                        <legend class="text-bold">Access Rights</legend>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Role</label>
+                                            <div class="col-lg-8">
+                                                <select name="role" class="form-control">
+                                                    <option value="opt1">Owner</option>
+                                                    <option value="opt2">Administrator</option>
+                                                    <option value="opt3">User</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Password</label>
+                                            <div class="col-lg-8">
+                                                <input type="password" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4 text-semibold">Confirm Password</label>
+                                            <div class="col-lg-8">
+                                                <input type="password" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="auditii_website.admin/settings/integrations" name="User Details">
+        <t t-call="auditii_website.admin/layout">
+            <div class="panel page-header border-top-primary" style="padding-bottom: 0;">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h5>
+                            <span class="text-semibold">App Directory</span>
+                        </h5>
+                    </div>
+                    <div class="heading-elements">
+                    </div>
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-wide" style="box-shadow: none;">
+                    <ul class="breadcrumb">
+                        <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Integrations</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <h4 class="content-group text-semibold">
+                    CRM
+                </h4>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <div style="width:60px; height:60px; background: url(https://www.helpscout.net/images/features/apps/helpscout-apps-8.jpg) no-repeat; background-position:0px -240px"/>
+                                    </a>
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-heading">AgileCRM</h6>
+                                    <span class="text-muted">CRM for small businesses</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <div style="width:60px; height:60px; background: url(https://www.helpscout.net/images/features/apps/helpscout-apps-8.jpg) no-repeat; background-position:-300px 0px"/>
+                                    </a>
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-heading">Capsule</h6>
+                                    <span class="text-muted">The easy online CRM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <div style="width:60px; height:60px; background: url(https://www.helpscout.net/images/features/apps/helpscout-apps-8.jpg) no-repeat; background-position:-360px 0px"/>
+                                    </a>
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-heading">Highrise</h6>
+                                    <span class="text-muted">Small business CRM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <div style="width:60px; height:60px; background: url(https://www.helpscout.net/images/features/apps/helpscout-apps-8.jpg) no-repeat; background-position:-540px -120px"/>
+                                    </a>
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-heading">OnePageCRM</h6>
+                                    <span class="text-muted">CRM with built-in sales method</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <div style="width:60px; height:60px; background: url(https://www.helpscout.net/images/features/apps/helpscout-apps-8.jpg) no-repeat; background-position:0px -180px"/>
+                                    </a>
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-heading">Pipedrive</h6>
+                                    <span class="text-muted">Simple CRM for driving sales</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <div style="width:60px; height:60px; background: url(https://www.helpscout.net/images/features/apps/helpscout-apps-8.jpg) no-repeat; background-position:-60px -180px"/>
+                                    </a>
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-heading">Pipeline Deals</h6>
+                                    <span class="text-muted">Simple useufl CRM software</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="content-group text-semibold">
+                    Communication
+                </h4>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <div style="width:60px; height:60px; background: url(https://www.helpscout.net/images/features/apps/helpscout-apps-8.jpg) no-repeat; background-position:-60px -295px"/>
+                                    </a>
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-heading">Trello</h6>
+                                    <span class="text-muted">Project Management</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>
